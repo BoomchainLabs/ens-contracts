@@ -37,6 +37,9 @@ abstract contract ResolverCaller is CCIPBatcher {
     ///   If the calldata is `multicall()` it is disassembled, called separately, and reassembled.
     ///
     /// @dev Reverts `UnreachableName` if resolver is not a contract.
+	///      This function never returns normally.
+	///      The return type is necessary to define the result of the callback.
+	///      Call this function externally or with `ccipRead()` to intercept the response.
     /// @param resolver The resolver to call.
     /// @param name The DNS-encoded ENS name.
     /// @param data The calldata for the resolution.
